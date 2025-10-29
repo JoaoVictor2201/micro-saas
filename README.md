@@ -102,3 +102,11 @@ Após executar `docker-compose up`, os serviços estarão disponíveis nos segui
 * **Serviço de Atividades e Notas:**
     * **API:** `http://localhost:5003/`
     * **Swagger Docs:** `http://localhost:5003/apidocs`
+
+ 
+## Integrantes:
+
+- João Victor - 2402779
+- Vitor Daniel - 2403060
+- Anderson Alberissi - 2403321
+- Gabriel Gonçalves - 2402912

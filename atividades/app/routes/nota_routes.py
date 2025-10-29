@@ -20,7 +20,7 @@ def get_notas():
           items:
             $ref: '#/definitions/Nota'
     """
-    notas = nota_controller.get_all_notas()
+    notas = nota_controller.get_notas()
     return jsonify(notas)
 
 @nota_bp.route('/<int:nota_id>', methods=['GET'])
@@ -43,7 +43,7 @@ def get_nota(nota_id):
       404:
         description: Nota não encontrada
     """
-    nota = nota_controller.get_nota_by_id(nota_id)
+    nota = nota_controller.get_nota(nota_id)
     if nota:
         return jsonify(nota)
     return jsonify({'error': 'Nota não encontrada'}), 404

@@ -17,9 +17,9 @@ class Atividade(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'nome_atividade': self.nome_atividade,
+            'nome': self.nome,
             'descricao': self.descricao,
-            'peso_porcento': self.peso_porcento,
+            'peso_nota': self.peso_nota,
             'data_entrega': str(self.data_entrega) if self.data_entrega else None,
             'turma_id': self.turma_id,
             'professor_id': self.professor_id

@@ -41,7 +41,7 @@ def get_atividade(atividade_id):
       404:
         description: Atividade não encontrada
     """
-    atividade = atividade_controller.get_atividade_by_id(atividade_id)
+    atividade = atividade_controller.get_atividade(atividade_id)
     if atividade:
         return jsonify(atividade)
     return jsonify({'error': 'Atividade não encontrada'}), 404

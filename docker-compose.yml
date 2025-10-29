@@ -10,6 +10,15 @@ services:
       - ./gerenciamento/database.db:/app/database.db
     networks:
       - rede_escola
+
+    command: |
+      sh -c "
+        if [ ! -f /app/database.db ]; then
+          echo 'Database Gerenciamento not found, creating...';
+          python -c 'from app import db, create_app; app = create_app(); app.app_context().push(); db.create_all()';
+        fi;
+        gunicorn --bind 0.0.0.0:5000 run:app
+      "
   
   reservas:
     build: ./reservas
@@ -24,6 +33,15 @@ services:
       - gerenciamento
     networks:
       - rede_escola
+
+    command: |
+      sh -c "
+        if [ ! -f /app/reservas.db ]; then
+          echo 'Database Reservas not found, creating...';
+          python -c 'from app import db, create_app; app = create_app(); app.app_context().push(); db.create_all()';
+        fi;
+        gunicorn --bind 0.0.0.0:5000 run:app
+      "
 
   atividades:
     build: ./atividades
@@ -40,6 +58,15 @@ services:
       - gerenciamento # Depende do gerenciamento para estar online
     networks:
       - rede_escola
+
+    command: |
+      sh -c "
+        if [ ! -f /app/atividades.db ]; then
+          echo 'Database Atividades not found, creating...';
+          python -c 'from app import db, create_app; app = create_app(); app.app_context().push(); db.create_all()';
+        fi;
+        gunicorn --bind 0.0.0.0:5000 run:app
+      "
 
 networks:
   rede_escola:

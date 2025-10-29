@@ -12,8 +12,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     Swagger(app)
 
-    @app.route('/teste-reservas')
-    def teste():
-        return "<h1>Serviço de Reservas está no ar!</h1>"
+    from app.routes.reserva_routes import reserva_bp
+    app.register_blueprint(reserva_bp)
 
     return app

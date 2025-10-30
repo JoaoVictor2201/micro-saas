@@ -32,8 +32,8 @@ A forma mais simples de executar todo o ecossistema é utilizando o Docker Compo
 
 1.  **Clonar o repositório:**
     ```bash
-    git clone <https://github.com/JoaoVictor2201/micro-saas.git>
-    cd micro-saas
+    git clone https://github.com/JoaoVictor2201/micro-saas
+    cd micro-saas-main
     ```
 
 2.  **Subir os containers:**
@@ -43,49 +43,8 @@ A forma mais simples de executar todo o ecossistema é utilizando o Docker Compo
     ```
     O comando `--build` força a reconstrução das imagens, o que é útil se fizeres alterações no código.
 
-3.  **Criar os Bancos de Dados (Primeira Execução):**
-    Como cada serviço tem um banco de dados SQLite separado, precisamos criá-los. Abra **três novos terminais** e execute os seguintes comandos, um em cada terminal:
-
-    * **Terminal 1 (Gerenciamento):**
-        ```bash
-        docker exec -it gerenciamento flask shell
-        ```
-        Dentro do shell, digite:
-        ```python
-        from app import db, create_app
-        app = create_app()
-        with app.app_context():
-            db.create_all()
-        exit()
-        ```
-
-    * **Terminal 2 (Reservas):**
-        ```bash
-        docker exec -it reservas flask shell
-        ```
-        Dentro do shell, digite:
-        ```python
-        from app import db, create_app
-        app = create_app()
-        with app.app_context():
-            db.create_all()
-        exit()
-        ```
-
-    * **Terminal 3 (Atividades):**
-        ```bash
-        docker exec -it atividades flask shell
-        ```
-        Dentro do shell, digite:
-        ```python
-        from app import db, create_app
-        app = create_app()
-        with app.app_context():
-            db.create_all()
-        exit()
-        ```
-
-4.  **Pronto!** Os serviços estão a funcionar.
+3.  **Pronto!**
+    Os serviços irão arrancar. Na primeira execução, irás ver mensagens no terminal a indicar que os bancos de dados (`database.db`, `reservas.db`, `atividades.db`) não foram encontrados e estão a ser criados. Isto é automático e esperado.
 
 ## Endpoints e Documentação (Swagger)
 
@@ -102,11 +61,3 @@ Após executar `docker-compose up`, os serviços estarão disponíveis nos segui
 * **Serviço de Atividades e Notas:**
     * **API:** `http://localhost:5003/`
     * **Swagger Docs:** `http://localhost:5003/apidocs`
-
- 
-## Integrantes:
-
-- João Victor - 2402779
-- Vitor Daniel - 2403060
-- Anderson Alberissi - 2403321
-- Gabriel Gonçalves - 2402912

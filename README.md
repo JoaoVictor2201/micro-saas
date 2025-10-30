@@ -26,14 +26,13 @@ A forma mais simples de executar todo o ecossistema é utilizando o Docker Compo
 
 **Pré-requisitos:**
 * [Docker](https://docs.docker.com/get-docker/)
-* [Docker Compose](https://docs.docker.com/compose/install/)
 
 **Instruções:**
 
 1.  **Clonar o repositório:**
     ```bash
     git clone https://github.com/JoaoVictor2201/micro-saas
-    cd micro-saas-main
+    cd micro-saas
     ```
 
 2.  **Subir os containers:**
